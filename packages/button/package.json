@@ -1,0 +1,60 @@
+{
+  "name": "@farmerui/button",
+  "version": "0.0.0",
+  "description": "",
+  "keywords": [
+    "react",
+    "ui",
+    "component library"
+  ],
+  "author": "coderlwh",
+  "license": "MIT",
+  "homepage": "https://github.com/coderliweihong/farmer-ui/blob/main/README.md",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/coderliweihong/farmer-ui.git"
+  },
+  "bugs": {
+    "url": "https://github.com/coderliweihong/farmer-ui/issues"
+  },
+  "scripts": {
+    "build:dev": "pnpm --filter @farmerui/button run build:ESM-dev & pnpm --filter @farmerui/button run build:UMD-dev & pnpm --filter @farmerui/button run build:CMD-dev",
+    "build:dev-testdist": "pnpm --filter @farmerui/button run build:ESM-dev-testdist & pnpm --filter @farmerui/button run build:UMD-dev-testdist & pnpm --filter @farmerui/button run build:CMD-dev-testdist",
+    "build:ESM-dev": "cross-env NODE_ENV=development TEST_DIST=false LIB_TYPE=module webpack -c webpack.config.ts",
+    "build:UMD-dev": "cross-env NODE_ENV=development TEST_DIST=false LIB_TYPE=umd webpack -c webpack.config.ts",
+    "build:CMD-dev": "cross-env NODE_ENV=development TEST_DIST=false LIB_TYPE=commonjs webpack -c webpack.config.ts",
+    "build:ESM-dev-testdist": "cross-env NODE_ENV=development TEST_DIST=testdist LIB_TYPE=module webpack -c webpack.config.ts",
+    "build:UMD-dev-testdist": "cross-env NODE_ENV=development TEST_DIST=testdist LIB_TYPE=umd webpack -c webpack.config.ts",
+    "build:CMD-dev-testdist": "cross-env NODE_ENV=development TEST_DIST=testdist LIB_TYPE=commonjs webpack -c webpack.config.ts",
+    "test": "echo test"
+  },
+  "main": "./lib/index.js",
+  "browser": "./dist/index.js",
+  "module": "./es/index.esm.js",
+  "types": "",
+  "exports": {
+    ".": {
+      "require": "./lib/index.js",
+      "module": "./es/index.esm.js",
+      "default": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist",
+    "lib",
+    "es",
+    "README.md"
+  ],
+  "peerDependencies": {
+    "react": ">=18.2.0",
+    "react-dom": ">=18.2.0"
+  },
+  "dependencies": {
+    "@farmerui/shared": "workspace:^"
+  },
+  "dependenciesMeta": {
+    "@farmerui/shared": {
+      "injected": true
+    }
+  }
+}
