@@ -4,7 +4,6 @@ import HtmlWebpackPlugin from 'html-webpack-plugin';
 import {Configuration as DevServerConfiguration} from 'webpack-dev-server';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 const isProd = process.env.NODE_ENV && process.env.NODE_ENV.toLowerCase()  === 'production';
-const isTestdist = process.env.TEST_DIST && process.env.TEST_DIST.toLowerCase()  === 'testdist';
 
 const config: webpack.Configuration & { devServer?: DevServerConfiguration } = {
     mode: isProd ? 'production' : 'development',
@@ -56,9 +55,7 @@ const config: webpack.Configuration & { devServer?: DevServerConfiguration } = {
     },
     resolve: {
         extensions: ['.tsx', '.ts', '.js', '.json'],
-        alias: isTestdist ? {
-            '@': path.resolve(__dirname, 'src/'),
-        }: {
+        alias: {
             '@farmerui/ui': path.resolve(__dirname, '..','packages/ui/src'),
             '@farmerui/button': path.resolve(__dirname, '..','packages/button/src'),
             '@farmerui/input': path.resolve(__dirname, '..','packages/input/src'),

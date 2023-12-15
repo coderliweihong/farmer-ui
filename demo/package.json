@@ -2,8 +2,7 @@
   "name": "@farmerui/demo",
   "private": true,
   "scripts": {
-    "dev": "cross-env NODE_ENV=development TEST_DIST=false webpack server",
-    "dev:test": "cross-env NODE_ENV=development TEST_DIST=testdist webpack server"
+    "dev": "cross-env NODE_ENV=development TEST_DIST=false webpack server"
   },
   "dependencies": {
     "@farmerui/ui": "workspace:^"

@@ -63,7 +63,7 @@ importers:
 
   demo:
     specifiers:
-      '@farmerui/ui': workspace:^0.0.0
+      '@farmerui/ui': workspace:^
     dependencies:
       '@farmerui/ui': link:../packages/ui
 
@@ -76,12 +76,9 @@ importers:
       react: '>=18.2.0'
       react-dom: '>=18.2.0'
     dependencies:
-      '@farmerui/shared': file:packages/shared
+      '@farmerui/shared': link:../shared
       react: 18.2.0
       react-dom: 18.2.0_react@18.2.0
-    dependenciesMeta:
-      '@farmerui/shared':
-        injected: true
 
   packages/input:
     specifiers:
@@ -89,12 +86,9 @@ importers:
       react: '>=18.2.0'
       react-dom: '>=18.2.0'
     dependencies:
-      '@farmerui/shared': file:packages/shared
+      '@farmerui/shared': link:../shared
       react: 18.2.0
       react-dom: 18.2.0_react@18.2.0
-    dependenciesMeta:
-      '@farmerui/shared':
-        injected: true
 
   packages/shared:
     specifiers:
@@ -106,24 +100,17 @@ importers:
 
   packages/ui:
     specifiers:
-      '@farmerui/button': workspace:^0.0.0
-      '@farmerui/input': workspace:^0.0.0
-      '@farmerui/shared': workspace:^0.0.0
+      '@farmerui/button': workspace:^
+      '@farmerui/input': workspace:^
+      '@farmerui/shared': workspace:^
       react: '>=18.2.0'
       react-dom: '>=18.2.0'
     dependencies:
-      '@farmerui/button': file:packages/button_biqbaboplfbrettd7655fr4n2y
-      '@farmerui/input': file:packages/input_biqbaboplfbrettd7655fr4n2y
+      '@farmerui/button': link:../button
+      '@farmerui/input': link:../input
       '@farmerui/shared': link:../shared
       react: 18.2.0
       react-dom: 18.2.0_react@18.2.0
-    dependenciesMeta:
-      '@farmerui/button':
-        injected: true
-      '@farmerui/input':
-        injected: true
-      '@farmerui/shared':
-        injected: true
 
 packages:
 
@@ -3720,43 +3707,6 @@ packages:
       utf-8-validate:
         optional: true
     dev: true
-
-  file:packages/button_biqbaboplfbrettd7655fr4n2y:
-    resolution: {directory: packages/button, type: directory}
-    id: file:packages/button
-    name: '@farmerui/button'
-    version: 0.0.0
-    peerDependencies:
-      react: '>=18.2.0'
-      react-dom: '>=18.2.0'
-    dependencies:
-      '@farmerui/shared': file:packages/shared
-      react: 18.2.0
-      react-dom: 18.2.0_react@18.2.0
-    dev: false
-
-  file:packages/input_biqbaboplfbrettd7655fr4n2y:
-    resolution: {directory: packages/input, type: directory}
-    id: file:packages/input
-    name: '@farmerui/input'
-    version: 0.0.0
-    peerDependencies:
-      react: '>=18.2.0'
-      react-dom: '>=18.2.0'
-    dependencies:
-      '@farmerui/shared': file:packages/shared
-      react: 18.2.0
-      react-dom: 18.2.0_react@18.2.0
-    dev: false
-
-  file:packages/shared:
-    resolution: {directory: packages/shared, type: directory}
-    name: '@farmerui/shared'
-    version: 0.0.0
-    dependencies:
-      '@types/lodash': 4.14.202
-      lodash: r2.cnpmjs.org/lodash/4.17.21
-    dev: false
 
   r2.cnpmjs.org/@babel/plugin-syntax-async-generators/7.8.4_@babel+core@7.23.5:
     resolution: {integrity: sha512-tycmZxkGfZaxhMRbXlPXuVFpdWlXpir2W4AMhSJgRKzk/eDlIXOhb2LHWoLpDF7TEHylV5zNhykX6KAgHJmTNw==, registry: https://r.cnpmjs.org/, tarball: https://r2.cnpmjs.org/@babel/plugin-syntax-async-generators/-/plugin-syntax-async-generators-7.8.4.tgz}
