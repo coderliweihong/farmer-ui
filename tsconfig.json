@@ -1,0 +1,16 @@
+// tsconfig.json
+{
+  "compilerOptions": {
+    "target": "es5",
+    "moduleResolution": "node",
+    // 将每个文件作为单独的模块（与“ts.transpileModule”类似）。
+    "isolatedModules": true,
+    "useDefineForClassFields": true,
+  },
+  "files": [],
+  "references": [
+    // 聚合 ts project
+    { "path": "./tsconfig.web.json" },
+    { "path": "./tsconfig.node.json" }
+  ],
+}

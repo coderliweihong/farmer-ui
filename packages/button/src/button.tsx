@@ -6,7 +6,7 @@ interface ButtonProps {
 	content?: string
 }
 
-const Button: React.FC<ButtonProps> = ({onClick, size, content}) => {
+const Button: React.FC<ButtonProps> = ({content}) => {
 	return <button onClick={() => hello(content)}>{content}12313123</button>
 }
 export default Button
