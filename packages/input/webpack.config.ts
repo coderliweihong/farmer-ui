@@ -2,26 +2,24 @@ import * as path from 'path';
 import * as webpack from 'webpack';
 const isProd = process.env.NODE_ENV && process.env.NODE_ENV.toLowerCase()  === 'production';
 const libType:string = process.env.LIB_TYPE && process.env.LIB_TYPE.toLowerCase() || '';
-const isTestdist = process.env.TEST_DIST && process.env.TEST_DIST.toLowerCase()  === 'testdist';
 /**
- * get library output config
+ * generate library output config
  * @param type module type
  */
-const getLibOutputConfig = (type: string) => {
+const generateLibOutputConfig = (type: string) => {
     switch (type) {
         case 'umd':
             return {
                 path: path.resolve(__dirname, 'dist'),
                 filename: 'index.js',
                 library: {
-                    name: 'FarmerUIInput',
+                    name: 'FarmerUIShared',
                     type: 'umd',
                     export: 'default'
                 },
                 globalObject: 'globalThis',
                 clean: true
             }
-            break;
         case 'module':
             return {
                 path: path.resolve(__dirname, 'es'),
@@ -32,31 +30,45 @@ const getLibOutputConfig = (type: string) => {
                 chunkFormat: 'module',
                 clean: true
             }
-            break;
         case 'commonjs':
             return {
                 path: path.resolve(__dirname, 'lib'),
                 filename: 'index.js',
                 library: {
-                    name: 'FarmerUIInput',
+                    name: 'FarmerUIShared',
                     type: 'commonjs'
                 },
                 clean: true
             }
-            break;
         default:
             return {
                 path: path.resolve(__dirname, 'dist'),
                 filename: 'index.js',
                 library: {
-                    name: 'FarmerUIInput',
+                    name: 'FarmerUIShared',
                     type: 'umd',
                     export: 'default'
                 },
                 globalObject: 'globalThis',
                 clean: true
             }
-            break;
+    }
+}
+
+/**
+ * generate library externalsType config
+ * @param type module type
+ */
+const generateLibExternalsTypeConfig = (type: string) => {
+    switch (type) {
+        case 'umd':
+            return 'umd';
+        case 'module':
+            return 'module';
+        case 'commonjs':
+            return 'commonjs';
+        default:
+            return 'umd';
     }
 }
 const config: webpack.Configuration = {
@@ -66,7 +78,7 @@ const config: webpack.Configuration = {
     experiments: {
         outputModule: libType === 'module'
     },
-    output: getLibOutputConfig(libType),
+    output: generateLibOutputConfig(libType),
     module: {
         rules: [
             {
@@ -82,20 +94,11 @@ const config: webpack.Configuration = {
         ],
     },
     resolve: {
-        extensions: ['.tsx','.ts', '.js', '.json'],
-        // alias: libType !== 'module' || isTestdist ? {
-        //     '@': path.resolve(__dirname, 'src/'),
-        // }: {
-        //     '@farmerui/shared': path.resolve(__dirname, '..', 'shared', 'src'),
-        //     '@': path.resolve(__dirname, 'src/'),
-        // },
-        alias: {
-            '@farmerui/shared': path.resolve(__dirname, '..', 'shared', 'src'),
-            '@': path.resolve(__dirname, 'src/'),
-        }
+        extensions: ['.tsx','.ts', '.js', '.json']
     },
     devtool: 'source-map',
-    externals: libType === 'module' || isTestdist ? {} : [
+    externalsType: generateLibExternalsTypeConfig(libType),
+    externals: [
         {
             'react': 'React',
             'react-dom': 'ReactDOM'

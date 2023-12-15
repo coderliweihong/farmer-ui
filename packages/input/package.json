@@ -14,14 +14,11 @@
     "url" : "https://github.com/coderliweihong/farmer-ui/issues"
   },
   "scripts": {
-    "build:dev": "pnpm --filter @farmerui/input run build:ESM-dev & pnpm --filter @farmerui/input run build:UMD-dev & pnpm --filter @farmerui/input run build:CMD-dev",
-    "build:dev-testdist": "pnpm --filter @farmerui/input run build:ESM-dev-testdist & pnpm --filter @farmerui/input run build:UMD-dev-testdist & pnpm --filter @farmerui/input run build:CMD-dev-testdist",
-    "build:ESM-dev": "cross-env NODE_ENV=development TEST_DIST=false LIB_TYPE=module webpack -c webpack.config.ts",
-    "build:UMD-dev": "cross-env NODE_ENV=development TEST_DIST=false LIB_TYPE=umd webpack -c webpack.config.ts",
-    "build:CMD-dev": "cross-env NODE_ENV=development TEST_DIST=false LIB_TYPE=commonjs webpack -c webpack.config.ts",
-    "build:ESM-dev-testdist": "cross-env NODE_ENV=development TEST_DIST=testdist LIB_TYPE=module webpack -c webpack.config.ts",
-    "build:UMD-dev-testdist": "cross-env NODE_ENV=development TEST_DIST=testdist LIB_TYPE=umd webpack -c webpack.config.ts",
-    "build:CMD-dev-testdist": "cross-env NODE_ENV=development TEST_DIST=testdist LIB_TYPE=commonjs webpack -c webpack.config.ts",
+    "build:dev": "cross-env NODE_ENV=development pnpm --filter @farmerui/input run build:ESM & cross-env NODE_ENV=development pnpm --filter @farmerui/input run build:UMD & cross-env NODE_ENV=development pnpm --filter @farmerui/input run build:CMD",
+    "build:prod": "cross-env NODE_ENV=production pnpm --filter @farmerui/input run build:ESM & cross-env NODE_ENV=production pnpm --filter @farmerui/input run build:UMD & cross-env NODE_ENV=production pnpm --filter @farmerui/input run build:CMD",
+    "build:ESM": "cross-env LIB_TYPE=module webpack -c webpack.config.ts",
+    "build:UMD": "cross-env LIB_TYPE=umd webpack -c webpack.config.ts",
+    "build:CMD": "cross-env LIB_TYPE=commonjs webpack -c webpack.config.ts",
     "test": "echo test"
   },
   "main": "./lib/index.js",
@@ -47,11 +44,6 @@
   },
   "dependencies": {
     "@farmerui/shared": "workspace:^"
-  },
-  "dependenciesMeta": {
-    "@farmerui/shared": {
-      "injected": true
-    }
   },
   "devDependencies": {}
 }

@@ -2,4 +2,3 @@
 export * from '@farmerui/button';
 export * from '@farmerui/input';
 export * from '@farmerui/shared';
-// export * from '../../button/src'

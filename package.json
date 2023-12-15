@@ -2,8 +2,7 @@
   "name": "farmer-ui",
   "private": true,
   "scripts": {
-    "build:ui": "pnpm --filter \"./packages/**\" run build:dev",
-    "build:ui-testdist": "pnpm --filter \"./packages/**\" run build:dev-testdist"
+    "build:ui": "pnpm --filter \"./packages/**\" run build:dev"
   },
   "devDependencies": {
     "@babel/core": "^7.23.5",

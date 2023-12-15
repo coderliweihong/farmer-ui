@@ -7,10 +7,5 @@
   },
   "dependencies": {
     "@farmerui/ui": "workspace:^"
-  },
-  "dependenciesMeta": {
-    "@farmerui/ui": {
-      "injected": true
-    }
   }
 }
