@@ -1,7 +1,7 @@
 // tsconfig.json
 {
   "compilerOptions": {
-    "target": "es5",
+    "target": "es2022",
     "moduleResolution": "node",
     // 将每个文件作为单独的模块（与“ts.transpileModule”类似）。
     "isolatedModules": true,

@@ -27,12 +27,13 @@
   "main": "./lib/index.js",
   "browser": "./dist/index.js",
   "module": "./es/index.esm.js",
-  "types": "",
+  "types": "./dist/index.d.ts",
   "exports": {
     ".": {
       "require": "./lib/index.js",
       "module": "./es/index.esm.js",
-      "default": "./dist/index.js"
+      "default": "./dist/index.js",
+      "types": "./dist/index.d.ts"
     }
   },
   "files": [
